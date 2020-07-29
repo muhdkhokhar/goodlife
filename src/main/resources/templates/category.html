@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Team</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<div class="hero-image">
+    <div class="hero-text">
+        <h1 style="font-size:50px">Categories</h1>
+    </div>
+</div>
+
+
+
+<div class="tab">
+
+    <button class="tablinks"><a href="category">Categories</a></button>
+    <button class="tablinks"><a href="about">About</a></button>
+    <button class="tablinks"><a href="contact">Contact</a></button>
+
+</div>
+
+<div id="Category" class="tabcontent">
+    <h3>Caetgories</h3>
+</div>
+
+<div id="About" class="tabcontent">
+    <h3>About</h3>
+</div>
+
+<div id="Contact" class="tabcontent">
+    <h3>Contact</h3>
+</div>
+
+<form method="GET" th:action="@{/home}" id="back">
+    <input type="submit" value="Back"/>
+</form>
+
+
+
+
+
+
+
+
+    <!--<input type="file" name="pic" accept="image/*">
+    <input type="submit">-->
+<td><a href="/addCategory">Add</a></td>
+
+
+
+<!--
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+-->
+
+</body>
+</html>
