@@ -9,7 +9,7 @@
 <body>
 <div class="hero-image">
     <div class="hero-text">
-        <h1 style="font-size:50px">Categories</h1>
+        <h1 style="font-size:50px">Products</h1>
     </div>
 </div>
 
@@ -25,7 +25,7 @@
 </div>
 
 <div id="Category" class="tabcontent">
-    <h3>Caetgories</h3>
+    <h3>Categories</h3>
 </div>
 
 <div id="Product" class="tabcontent">
@@ -48,18 +48,25 @@
 
 <table>
     <tr>
+        <th>Category</th>
         <th>Name</th>
         <th>Description</th>
+        <th>Quantity</th>
+        <th>Price</th>
+
 
 
     </tr>
-    <tr th:each = "about: ${category}">
+    <tr th:each = "about: ${product}">
+        <td th:text="${about.category.name}"></td>
         <td th:text="${about.name}"></td>
         <td th:text="${about.desc}"></td>
+        <td th:text="${about.quantity}"></td>
+        <td th:text="${about.price}"></td>
 
-        <td><a th:href="@{/editCategory/{id}(id=${about.id})}">Edit</a></td>
+        <td><a th:href="@{/editProduct/{id}(id=${about.id})}">Edit</a></td>
         <td>
-            <a th:href="@{/deleteCategory/{id}(id=${about.id})}"onclick="return confirm('Are you sure?')">Delete</a>
+            <a th:href="@{/deleteProduct/{id}(id=${about.id})}"onclick="return confirm('Are you sure?')">Delete</a>
         </td>
 
 
@@ -78,9 +85,9 @@
 
 
 
-    <!--<input type="file" name="pic" accept="image/*">
-    <input type="submit">-->
-<td><a href="/addCategory">Add</a></td>
+<!--<input type="file" name="pic" accept="image/*">
+<input type="submit">-->
+<td><a href="/addProduct">Add</a></td>
 
 
 

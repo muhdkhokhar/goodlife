@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @Controller
 public class AuthenticationController {
 
@@ -26,20 +25,13 @@ public class AuthenticationController {
 		return modelAndView;
 	}
 
+
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public ModelAndView init() {
+	public ModelAndView defaultScreen() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login"); // resources/template/login.html
 		return modelAndView;
 	}
-
-	@RequestMapping(value = { "/admin/products" }, method = RequestMethod.GET)
-	public ModelAndView products() {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("products"); // resources/template/login.html
-		return modelAndView;
-	}
-
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView register() {

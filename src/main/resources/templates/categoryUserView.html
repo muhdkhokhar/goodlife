@@ -57,10 +57,7 @@
         <td th:text="${about.name}"></td>
         <td th:text="${about.desc}"></td>
 
-        <td><a th:href="@{/editCategory/{id}(id=${about.id})}">Edit</a></td>
-        <td>
-            <a th:href="@{/deleteCategory/{id}(id=${about.id})}"onclick="return confirm('Are you sure?')">Delete</a>
-        </td>
+
 
 
 
@@ -74,13 +71,6 @@
 </table>
 
 
-
-
-
-
-    <!--<input type="file" name="pic" accept="image/*">
-    <input type="submit">-->
-<td><a href="/addCategory">Add</a></td>
 
 
 

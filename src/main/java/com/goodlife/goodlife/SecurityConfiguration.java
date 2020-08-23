@@ -43,11 +43,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				// URLs matching for access rights
 				.antMatchers("/").permitAll()
-				.antMatchers("/login").permitAll()
-				.antMatchers("/register").permitAll()
-				.antMatchers("/products").permitAll()
-				.antMatchers("/home").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
+				.antMatchers("/register","/login","/product").permitAll()
+				.antMatchers("/categoryUserView").hasAnyAuthority("SITE_USER")
+				.antMatchers("/home/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER")
 				.antMatchers("/admin/**").hasAnyAuthority("SUPER_USER","ADMIN_USER")
+				.antMatchers("/addProduct","/addCategory", "/editCategory/{id}","/deleteCategory/{id}").hasAnyAuthority("SUPER_USER","ADMIN_USER")
+
+
+
 				.anyRequest().authenticated()
 				.and()
 				// form login
