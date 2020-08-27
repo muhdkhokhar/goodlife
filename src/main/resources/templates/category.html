@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Team</title>
+    <title>Categories</title>
     <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
@@ -40,7 +40,7 @@
     <h3>Contact</h3>
 </div>
 
-<form method="GET" th:action="@{/home}" id="back">
+<form method="GET" th:action="@{/admin}" id="back">
     <input type="submit" value="Back"/>
 </form>
 
@@ -54,11 +54,11 @@
 
     </tr>
     <tr th:each = "about: ${category}">
-        <td th:text="${about.name}"></td>
-        <td th:text="${about.desc}"></td>
+        <td th style="text-align:center"  th:width="100" th:text="${about.name}"></td>
+        <td th style="text-align:center"  th:width="100" th:text="${about.desc}"></td>
 
-        <td><a th:href="@{/editCategory/{id}(id=${about.id})}">Edit</a></td>
-        <td>
+        <td th style="text-align:center"  th:width="100"><a th:href="@{/editCategory/{id}(id=${about.id})}">Edit</a></td>
+        <td th style="text-align:center"  th:width="100">
             <a th:href="@{/deleteCategory/{id}(id=${about.id})}"onclick="return confirm('Are you sure?')">Delete</a>
         </td>
 

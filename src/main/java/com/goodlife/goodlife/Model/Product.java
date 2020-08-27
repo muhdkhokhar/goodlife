@@ -3,16 +3,12 @@ package com.goodlife.goodlife.Model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Blob;
-
-import java.util.Arrays;
 import java.util.Date;
 
 @Data
 @Entity
 @Table(name = "product")
 public class Product {
-
 
 
     @Id
@@ -36,27 +32,26 @@ public class Product {
     @Column(name = "product_price")
     private double price;
 
-    @Lob
-    @Column(name = "Image", length = Integer.MAX_VALUE, nullable = true)
-    private byte[] image;
+
+    @Column(name = "Image")
+    private String image;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date", nullable = false)
     private Date createDate;
 
-    public Product(Category category, String name, String description, int quantity, double price, byte[] image, Date createDate) {
-        this.category = category;
-        this.name = name;
-        this.description = description;
-        this.quantity = quantity;
-        this.price = price;
-        this.image = image;
-        this.createDate = createDate;
+    public long getId() {
+        return id;
     }
 
-    public Product(){
-
+    public void setId(long id) {
+        this.id = id;
     }
+
+    public Category getCategory() {
+        return category;
+    }
+
     public void setCategory(Category category) {
         this.category = category;
     }
@@ -69,12 +64,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getDesc() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDesc(String desc) {
-        this.description = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getQuantity() {
@@ -93,15 +88,11 @@ public class Product {
         this.price = price;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -111,19 +102,5 @@ public class Product {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", category=" + category +
-                ", name='" + name + '\'' +
-                ", desc='" + description + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", image=" + Arrays.toString(image) +
-                ", createDate=" + createDate +
-                '}';
     }
 }

@@ -19,7 +19,7 @@
 
     <div class="col-lg-3" th:object="${category}">
 
-        <select class="form-control" id="category.id" name="category.id">
+        <select class="form-control" id="category.id" name="categoryId">
             <option value="">Select Category</option>
             <option th:each="cat : ${list}"
                     th:value="${cat.id}"
