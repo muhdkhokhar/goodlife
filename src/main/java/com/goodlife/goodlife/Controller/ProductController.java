@@ -15,15 +15,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -130,6 +131,36 @@ public class ProductController implements Serializable {
         }
 
         return ("addProduct");
+    }
+
+    @GetMapping("/editProduct/{id}")
+    public String showUpdateCategoryForm (@PathVariable("id") long id, Model model){
+        List<Category> list = (List<Category>) serviceCat.findAll();
+
+        model.addAttribute("list", serviceCat.findAll());
+        return "editProduct";
+    }
+
+    @PostMapping("/updateProduct/{id}")
+    public String updateFixtures ( @PathVariable("id") long id, @Valid Product product, Category category,
+                                   BindingResult result, Model model,final @RequestParam("image") MultipartFile file) throws IOException {
+//        if (result.hasErrors()) {
+//            category.setId((int) id);
+//            return "category";
+//        }
+
+        Product x = service.findAllById(id);
+        Category cat = x.getCategory();
+
+        String fname = file.getOriginalFilename();
+        File f = new File(uploadFolder + File.separator + fname);
+        file.transferTo(f);
+        product.setCategory(cat);
+        product.setImage(f.getName());
+
+        productService.saveProduct(product);
+        model.addAttribute("product", service.findAll());
+        return "redirect:/product";
     }
 
 

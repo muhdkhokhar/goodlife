@@ -93,7 +93,7 @@ public class CategoryController implements Serializable {
                                    BindingResult result, Model model){
         if (result.hasErrors()) {
             category.setId((int) id);
-            return "editFixtures";
+            return "category";
         }
 
 
