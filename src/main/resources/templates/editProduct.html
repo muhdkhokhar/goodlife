@@ -12,14 +12,14 @@
 </head>
 <body>
 <div class="container my-5">
-    <h2 class="mb-5">Update Fixtures</h2>
+    <h2 class="mb-5">Update Product</h2>
     <div class="row">
         <div class="col-md-6">
             <form action="#" th:action="@{/updateProduct/{id}(id=${product.id})}" enctype="multipart/form-data" th:object="${product}" method="post">
                 <div class="row">
                     <div class="form-group col-md-6">
 
-                        <div class="col-lg-3" th:object="${category}">
+                        <div class="col-lg-12" th:object="${category}">
                         <select class="form-control" id="category.id" name="categoryId">
                             <option value="">Select Category</option>
                             <option th:each="cat : ${list}"
@@ -43,7 +43,10 @@
 
 
 
-                        <input type="file" name="image" multiple required />
+                        <label for="image" class="col-form-label">Image:</label>
+                        <img th:src="@{'../'+${product.image}}" width="100" name="image" height="75"/>
+                        <input type="file" name="uploadedImage" multiple required />
+
 
 
 

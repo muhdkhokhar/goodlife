@@ -138,12 +138,16 @@ public class ProductController implements Serializable {
         List<Category> list = (List<Category>) serviceCat.findAll();
 
         model.addAttribute("list", serviceCat.findAll());
+
+        Product product = productRepository.findById(id).get();
+
+        model.addAttribute("product",product);
         return "editProduct";
     }
 
     @PostMapping("/updateProduct/{id}")
     public String updateFixtures ( @PathVariable("id") long id, @Valid Product product, Category category,
-                                   BindingResult result, Model model,final @RequestParam("image") MultipartFile file) throws IOException {
+                                   BindingResult result, Model model,final @RequestParam("uploadedImage") MultipartFile file) throws IOException {
 //        if (result.hasErrors()) {
 //            category.setId((int) id);
 //            return "category";
@@ -156,7 +160,9 @@ public class ProductController implements Serializable {
         File f = new File(uploadFolder + File.separator + fname);
         file.transferTo(f);
         product.setCategory(cat);
+        product.setCreateDate(new Date());
         product.setImage(f.getName());
+
 
         productService.saveProduct(product);
         model.addAttribute("product", service.findAll());
